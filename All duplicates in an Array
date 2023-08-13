@@ -1,0 +1,33 @@
+solution 1:
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int>ans;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<nums.size()-1;i++){
+            if(nums[i]==nums[i+1]){
+                ans.push_back(nums[i]);
+            }
+        }
+        return ans;
+    }
+};
+
+
+solution 2:(optimised)(T(n)=n,s(n)=O(1))
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int>ans;
+        for(int i=0;i<nums.size();i++){
+            int index=abs(nums[i])-1;
+            if(nums[index]<0){
+                ans.push_back(index+1);
+            }
+            nums[index]= -nums[index];
+        }
+        return ans;
+    }
+};
