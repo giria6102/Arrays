@@ -1,0 +1,52 @@
+Brut force:approach 1
+for(int i=0;i<n;i++){
+  for(int j=i+1;j<n;j++){
+.......
+......
+......
+
+
+approach:2 (when we have to return the indexes)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n=nums.size();
+        map<int,int>mp;
+        for(int i=0;i<n;i++){
+            int a=nums[i];
+            int b=target-a;
+            if(mp.find(b)!=mp.end()){
+                return {mp[b],i};
+            }
+            mp[a]=i;
+        }
+        return {-1,-1};
+               
+    }
+};
+appraoch:3(when we have to return Yes/No),T(n)=nlogn+n;S(c)=O(1);
+string read(int n, vector<int> book, int target)
+{
+    int left=0;
+    int right=n-1;
+    sort(book.begin(),book.end());
+    while(left<right){
+        int sum=(book[left]+book[right]);
+        if(sum==target){
+            return "YES";
+        }
+        else if(sum<target){
+            left++;
+        }
+        else{
+            right--;
+        }
+    }
+    return "NO";
+}
+
+
+
+
+
+    
