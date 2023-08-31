@@ -1,0 +1,79 @@
+Brute force:
+
+int main() {
+    int n;
+    cin>>n;
+    
+    int arr[n]={1,2,3,4,5};
+    
+    int maxi=-1;
+    int sum=0;
+    
+    for(int i=0;i<n;i++){
+        for(int j=i;j<n;j++){
+            for(int k=i;k<=j;k++){
+                sum=sum+arr[k];
+                
+            }
+            maxi=max(maxi,sum);
+            
+        }
+    }
+    
+     cout<<maxi<<endl;
+    return 0;
+}
+
+Appraoch :2
+int main() {
+    int n;
+    cin>>n;
+    
+    int arr[n]={1,2,3,4,5};
+    
+    int maxi=-1;
+    int sum=0;
+    
+    for(int i=0;i<n;i++){
+        for(int j=i;j<n;j++){
+            sum+=arr[j];
+            maxi=max(maxi,sum);
+        }
+    }
+    
+     cout<<maxi<<endl;
+    return 0;
+}
+
+optimised Approach:
+int main() {
+     //kadanes algorithm
+     int arr[4]={-1,2,3,4,};
+     int n=4;
+     int maxi=-85235;
+     int sum=0;
+     int ansstart=-1;
+     int ansend=-1;
+     for(int i=0;i<n;i++){
+         int start=0;
+         if(sum==0){
+             start=i;
+             
+         }
+         sum=sum+arr[i];
+         if(sum>maxi){
+             maxi=sum;
+             ansstart=start;
+             ansend=i;
+         }
+         else if(sum<0){
+             sum=0;
+         }
+         
+     }
+     cout<<maxi;
+     cout<<endl;
+     cout<<" Starting index -> "<<ansstart<<", "<<"Ending index -> "<<ansend<<endl;
+     
+    return 0;
+}
